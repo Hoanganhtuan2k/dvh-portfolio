@@ -1,0 +1,17 @@
+# Render Blueprint — auto-deploy on push to main
+# Docs: https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: dvh-portfolio
+    runtime: docker
+    plan: free
+    region: singapore
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_TELEMETRY_DISABLED
+        value: "1"
