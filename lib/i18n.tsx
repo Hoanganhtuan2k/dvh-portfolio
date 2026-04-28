@@ -572,6 +572,7 @@ const UI_DICT = {
     en: "Place your CV at public/Dao_Viet_Hoang_CV.pdf to enable inline preview.",
   },
   "resume.requestCopy": { vi: "Yêu cầu bản copy", en: "Request a copy" },
+  "resume.request": { vi: "Yêu cầu bản copy", en: "Request a copy" },
 
   // contact / footer
   "contact.title": { vi: "Liên hệ với tôi", en: "Hit Me Up" },
@@ -640,6 +641,7 @@ const UI_DICT = {
 
   // project card
   "project.featured.badge": { vi: "MỚI NHẤT", en: "LATEST" },
+  "project.latest": { vi: "MỚI NHẤT", en: "LATEST" },
   "project.scope": { vi: "PHẠM VI", en: "SCOPE" },
 } as const satisfies Record<string, { vi: string; en: string }>;
 
