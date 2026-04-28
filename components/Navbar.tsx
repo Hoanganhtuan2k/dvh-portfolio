@@ -3,13 +3,16 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Home, FileText } from "lucide-react";
-import { NAV_LINKS } from "@/lib/constants";
+import { useContent, useT } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 import { useResume } from "./ResumeProvider";
+import LocaleSwitcher from "./LocaleSwitcher";
 
 export default function Navbar() {
   const path = usePathname();
   const resume = useResume();
+  const { navLinks } = useContent();
+  const t = useT();
 
   return (
     <header className="sticky top-4 z-50 flex justify-center px-4">
@@ -30,7 +33,7 @@ export default function Navbar() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-0.5 px-1 text-white/55">
-          {NAV_LINKS.filter((l) => l.href !== "/").map((l) => {
+          {navLinks.filter((l) => l.href !== "/").map((l) => {
             const active = path === l.href;
             return (
               <Link
@@ -54,8 +57,10 @@ export default function Navbar() {
           onClick={resume.open}
           className="ml-1 inline-flex items-center gap-1.5 rounded-full border border-cyan/50 px-3.5 py-2 text-cyan transition hover:bg-cyan/10"
         >
-          <FileText size={12} /> CV
+          <FileText size={12} /> {t("nav.cv")}
         </button>
+
+        <LocaleSwitcher />
       </div>
     </header>
   );

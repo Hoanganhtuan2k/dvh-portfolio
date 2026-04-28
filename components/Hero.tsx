@@ -7,10 +7,12 @@ import FloatingIcons from "./FloatingIcons";
 import MagneticButton from "./MagneticButton";
 import RotatingTitle from "./RotatingTitle";
 import { useResume } from "./ResumeProvider";
-import { PERSON } from "@/lib/constants";
+import { useContent, useT } from "@/lib/i18n";
 
 export default function Hero() {
   const resume = useResume();
+  const { person } = useContent();
+  const t = useT();
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -50,7 +52,7 @@ export default function Hero() {
               <span className="absolute inset-0 animate-ping rounded-full bg-emerald-400/70" />
               <span className="relative h-1.5 w-1.5 rounded-full bg-emerald-400" />
             </span>
-            AVAILABLE FOR HIRE
+            {t("hero.available")}
           </motion.a>
 
           <motion.p
@@ -59,7 +61,7 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
             className="font-mono text-[10px] tracking-[0.32em] text-white/50"
           >
-            HELLO! I&apos;M
+            {t("hero.hello")}
           </motion.p>
 
           <motion.h1
@@ -68,7 +70,7 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
             className="text-gradient-cyan mt-2 text-[clamp(32px,5vw,60px)] font-bold leading-[1.05] tracking-[-0.03em]"
           >
-            {PERSON.name}
+            {person.name}
           </motion.h1>
 
           <motion.p
@@ -77,8 +79,8 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="mt-2.5 font-mono text-[12.5px] text-white/70 sm:text-sm"
           >
-            <span className="text-cyan">AI Developer</span> ·{" "}
-            <span className="text-warm">Fintech &amp; Banking</span>
+            <span className="text-cyan">{t("hero.role.left")}</span> ·{" "}
+            <span className="text-warm">{t("hero.role.right")}</span>
           </motion.p>
 
           {/* Rotating role title with state dots */}
@@ -90,12 +92,11 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="mt-7 max-w-[560px] text-balance text-[14px] leading-[1.65] text-white/65"
           >
-            Building intelligent backend systems for{" "}
-            <b className="text-white">banking</b>,{" "}
-            <b className="text-white">payments</b> and{" "}
-            <b className="text-white">financial platforms</b> — where{" "}
-            <span className="text-cyan">AI</span> meets enterprise-grade
-            reliability.
+            {t("hero.lead.prefix")}{" "}
+            <b className="text-white">{t("hero.lead.banking")}</b>,{" "}
+            <b className="text-white">{t("hero.lead.payments")}</b>{" "}
+            <b className="text-white">{t("hero.lead.platforms")}</b>{" "}
+            {t("hero.lead.suffix")}
           </motion.p>
 
           {/* CTAs */}
@@ -105,14 +106,14 @@ export default function Hero() {
               href="/projects"
               className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-5 py-3 text-sm transition hover:border-white/30"
             >
-              <Coffee size={14} /> Projects
+              <Coffee size={14} /> {t("hero.cta.projects")}
             </MagneticButton>
 
             <MagneticButton
               onClick={resume.open}
               className="inline-flex items-center gap-2 rounded-full border border-cyan/60 bg-cyan/15 px-5 py-3 text-sm text-cyan shadow-[0_0_30px_-5px_rgba(0,217,255,0.5)] transition hover:bg-cyan/25"
             >
-              <FileText size={14} /> View CV
+              <FileText size={14} /> {t("hero.cta.cv")}
             </MagneticButton>
 
             <MagneticButton
@@ -120,7 +121,7 @@ export default function Hero() {
               href="/about"
               className="inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-400/10 px-5 py-3 text-sm text-emerald-300 transition hover:bg-emerald-400/20"
             >
-              <Rocket size={14} /> Persona
+              <Rocket size={14} /> {t("hero.cta.persona")}
             </MagneticButton>
           </div>
         </div>
@@ -136,7 +137,7 @@ export default function Hero() {
         transition={{ delay: 1.1, duration: 0.7 }}
         className="group absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 flex-col items-center gap-2.5 font-mono text-[9.5px] tracking-[0.32em] text-white/40 transition hover:text-cyan"
       >
-        <span>SCROLL</span>
+        <span>{t("hero.scroll")}</span>
         {/* mouse shape */}
         <span className="relative flex h-7 w-[18px] items-start justify-center rounded-full border border-white/25 transition group-hover:border-cyan/60">
           <motion.span

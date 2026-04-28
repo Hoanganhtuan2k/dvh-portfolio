@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect } from "react";
 import { Download, X, ExternalLink } from "lucide-react";
-import { PERSON } from "@/lib/constants";
+import { useContent, useT } from "@/lib/i18n";
 
 const RESUME_URL = "/Dao_Viet_Hoang_CV.pdf";
 const RESUME_DOWNLOAD_URL = "/Dao_Viet_Hoang_CV.pdf";
@@ -15,6 +15,8 @@ export default function ResumeModal({
   open: boolean;
   onClose: () => void;
 }) {
+  const { person } = useContent();
+  const t = useT();
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onClose();
@@ -49,10 +51,10 @@ export default function ResumeModal({
             <div className="flex items-center justify-between gap-3 border-b border-white/10 px-5 py-3">
               <div>
                 <p className="font-mono text-[10.5px] tracking-[0.22em] text-cyan">
-                  RESUME · PDF
+                  {t("resume.label")}
                 </p>
                 <h3 className="text-sm font-medium text-white/90">
-                  {PERSON.name} — {PERSON.role}
+                  {person.name} — {person.role}
                 </h3>
               </div>
               <div className="flex items-center gap-2">
@@ -60,7 +62,7 @@ export default function ResumeModal({
                   href={RESUME_DOWNLOAD_URL}
                   className="inline-flex items-center gap-1.5 rounded-full border border-cyan/50 bg-cyan/10 px-3 py-1.5 font-mono text-[11px] tracking-[0.18em] text-cyan transition hover:bg-cyan/20"
                 >
-                  <Download size={13} /> DOWNLOAD
+                  <Download size={13} /> {t("resume.download")}
                 </a>
                 <a
                   href={RESUME_URL}
@@ -68,11 +70,11 @@ export default function ResumeModal({
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 font-mono text-[11px] tracking-[0.18em] text-white/70 transition hover:border-white/30"
                 >
-                  <ExternalLink size={13} /> NEW TAB
+                  <ExternalLink size={13} /> {t("resume.newTab")}
                 </a>
                 <button
                   onClick={onClose}
-                  aria-label="Close"
+                  aria-label={t("resume.close")}
                   className="grid h-8 w-8 place-items-center rounded-full border border-white/15 bg-white/5 text-white/70 hover:border-white/30 hover:text-white"
                 >
                   <X size={14} />
@@ -90,17 +92,16 @@ export default function ResumeModal({
                 <div className="grid h-full place-items-center p-8 text-center">
                   <div>
                     <p className="text-white/70">
-                      Place your CV at{" "}
+                      {t("resume.fallback")}{" "}
                       <code className="text-cyan">
                         public/Dao_Viet_Hoang_CV.pdf
-                      </code>{" "}
-                      to enable inline preview.
+                      </code>
                     </p>
                     <a
-                      href={`mailto:${PERSON.email}?subject=Resume request`}
+                      href={`mailto:${person.email}?subject=Resume request`}
                       className="mt-4 inline-flex items-center gap-2 rounded-full border border-cyan/50 bg-cyan/10 px-4 py-2 text-cyan"
                     >
-                      Request a copy
+                      {t("resume.request")}
                     </a>
                   </div>
                 </div>

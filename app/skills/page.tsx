@@ -1,17 +1,19 @@
+"use client";
+
 import { SectionTitle } from "@/components/SectionTitle";
 import { Kicker } from "@/components/Kicker";
-import { SKILLS, WORKFLOW } from "@/lib/constants";
+import { useContent, useT } from "@/lib/i18n";
 import { Hammer } from "lucide-react";
 
-export const metadata = { title: "Forge — Dao Viet Hoang" };
-
 export default function SkillsPage() {
+  const { skills, workflow } = useContent();
+  const t = useT();
   return (
     <section className="mx-auto max-w-[1280px] px-9 py-32">
-      <Kicker icon={<Hammer size={12} />} label="EXPERTISE" />
-      <SectionTitle>Technical Forge</SectionTitle>
+      <Kicker icon={<Hammer size={12} />} label={t("kicker.expertise")} />
+      <SectionTitle>{t("page.skills.title")}</SectionTitle>
       <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
-        {SKILLS.map((s, i) => (
+        {skills.map((s, i) => (
           <div
             key={s.title}
             className="relative rounded-2xl border border-white/10 bg-bg-soft p-5 transition hover:-translate-y-0.5 hover:border-white/25"
@@ -28,16 +30,16 @@ export default function SkillsPage() {
                   <span className="font-mono text-cyan">›</span> {it}
                 </li>
               ))}
-            </ul>
+          </ul>
           </div>
         ))}
       </div>
 
       <h3 className="mt-20 mb-5 text-3xl font-semibold tracking-tight">
-        Workflow
+        {t("page.skills.workflow")}
       </h3>
       <ol className="flex flex-wrap gap-2">
-        {WORKFLOW.map((w) => (
+        {workflow.map((w) => (
           <li
             key={w}
             className="flex items-center gap-2 rounded-full border border-white/10 bg-bg-soft px-4 py-2.5 font-mono text-[11.5px] tracking-[0.22em] transition hover:border-cyan hover:text-cyan"

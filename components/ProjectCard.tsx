@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import type { Project } from "@/lib/types";
+import { useT } from "@/lib/i18n";
 
 const tints = [
   "from-cyan/20 via-transparent",
@@ -19,6 +20,7 @@ export default function ProjectCard({
   p: Project;
   i: number;
 }) {
+  const t = useT();
   const tint = tints[i % tints.length];
   return (
     <motion.article
@@ -35,7 +37,7 @@ export default function ProjectCard({
       {p.featured && (
         <span className="absolute right-4 top-4 z-10 inline-flex items-center gap-1.5 rounded-full border border-cyan/50 bg-cyan/10 px-2.5 py-1 font-mono text-[10px] tracking-[0.22em] text-cyan">
           <span className="h-1.5 w-1.5 rounded-full bg-cyan animate-pulse" />
-          LATEST
+          {t("project.latest")}
         </span>
       )}
       <div
@@ -48,7 +50,15 @@ export default function ProjectCard({
           {p.title.split("—")[0].trim().toUpperCase()}
         </span>
         {p.when && (
-          <span className="absolute right-3 top-3 font-mono text-[10px] tracking-[0.2em] text-white/50">
+          <span
+            className={
+              p.featured
+                ? // Featured cards already render a LATEST pill at top-right,
+                  // so move the date to top-left to avoid overlap.
+                  "absolute left-3 top-3 rounded-full border border-white/10 bg-black/40 px-2 py-0.5 font-mono text-[10px] tracking-[0.2em] text-white/55 backdrop-blur"
+                : "absolute right-3 top-3 font-mono text-[10px] tracking-[0.2em] text-white/50"
+            }
+          >
             {p.when}
           </span>
         )}
@@ -62,7 +72,7 @@ export default function ProjectCard({
         </p>
         {p.scope && (
           <p className="font-mono text-[11px] tracking-[0.18em] text-cyan/80">
-            SCOPE · {p.scope}
+            {t("project.scope")} · {p.scope}
           </p>
         )}
         <div className="mt-auto flex flex-wrap gap-1.5 pt-2">

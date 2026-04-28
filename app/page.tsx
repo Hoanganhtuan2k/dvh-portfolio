@@ -1,3 +1,5 @@
+"use client";
+
 import Hero from "@/components/Hero";
 import { Banner, SectionTitle } from "@/components/SectionTitle";
 import ProjectCard from "@/components/ProjectCard";
@@ -8,19 +10,21 @@ import Contact from "@/components/Contact";
 import Marquee from "@/components/Marquee";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { EXPERIENCE, PROJECTS, SKILLS, WORKFLOW } from "@/lib/constants";
+import { useContent, useT } from "@/lib/i18n";
 
 export default function HomePage() {
+  const { projects, experience, skills, workflow } = useContent();
+  const t = useT();
   return (
     <>
       <Hero />
       <Marquee />
 
-      <Banner>FEATURED WORK</Banner>
+      <Banner>{t("home.banner.featured")}</Banner>
       <section id="projects" className="mx-auto max-w-[1280px] px-9 py-24">
-        <SectionTitle>Projects</SectionTitle>
+        <SectionTitle>{t("home.section.projects")}</SectionTitle>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {PROJECTS.map((p, i) => (
+          {projects.map((p, i) => (
             <ProjectCard key={p.id} p={p} i={i} />
           ))}
         </div>
@@ -28,36 +32,26 @@ export default function HomePage() {
           href="/projects"
           className="mt-10 inline-flex items-center gap-2 font-mono text-[13px] tracking-[0.2em] text-cyan hover:text-cyan-soft"
         >
-          View All Projects <ArrowRight size={14} />
+          {t("home.viewAll")} <ArrowRight size={14} />
         </Link>
       </section>
 
-      <Banner>WHO I AM</Banner>
+      <Banner>{t("home.banner.who")}</Banner>
       <section id="persona" className="mx-auto max-w-[1280px] px-9 py-24">
-        <SectionTitle>About Me</SectionTitle>
+        <SectionTitle>{t("home.section.about")}</SectionTitle>
         <div className="grid gap-9 lg:grid-cols-[1.4fr_1fr]">
           <div>
             <p className="font-mono text-[11px] tracking-[0.3em] text-cyan">
-              / ABOUT
+              / {t("kicker.about")}
             </p>
             <p className="mt-4 max-w-[620px] text-[17px] leading-[1.7] text-white/80">
-              I&apos;m Hoang — an{" "}
-              <span className="text-white">AI Developer</span> based in Hanoi,
-              focused on{" "}
-              <span className="text-white">banking and financial systems</span>
-              . I bridge classic Java/Spring backends with modern AI workloads:
-              RAG pipelines, LLM gateways, fraud-signal services and
-              decisioning APIs — without sacrificing latency, observability or
-              compliance.
+              {t("home.about.lead")}
             </p>
             <p className="mt-3 max-w-[620px] text-[15px] leading-[1.7] text-white/55">
-              4+ years across core banking (T24), API platforms (WSO2), PKI &
-              digital signing, and government-scale data systems. I care about
-              measurable reliability and shipping AI features that survive
-              audit, not just demos.
+              {t("home.about.lead2")}
             </p>
             <p className="mt-6 inline-block border-l-2 border-cyan py-1.5 px-4 font-mono text-[13px] text-cyan/90">
-              &quot;Reliable systems aren&apos;t loud — they just keep working.&quot;
+              {t("home.about.quote")}
             </p>
             <div className="mt-9">
               <Pillars />
@@ -67,17 +61,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      <Banner>EDUCATION &amp; WORK</Banner>
+      <Banner>{t("home.banner.work")}</Banner>
       <section id="experience" className="mx-auto max-w-[1280px] px-9 py-24">
-        <SectionTitle>Experience</SectionTitle>
-        <Timeline items={EXPERIENCE} />
+        <SectionTitle>{t("home.section.experience")}</SectionTitle>
+        <Timeline items={experience} />
       </section>
 
-      <Banner>SKILLS · WORKFLOW · IDENTITY</Banner>
+      <Banner>{t("home.banner.skills")}</Banner>
       <section id="forge" className="mx-auto max-w-[1280px] px-9 py-24">
-        <SectionTitle>Forge</SectionTitle>
+        <SectionTitle>{t("home.section.forge")}</SectionTitle>
         <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
-          {SKILLS.map((s, i) => (
+          {skills.map((s, i) => (
             <div
               key={s.title}
               className="relative rounded-2xl border border-white/10 bg-bg-soft p-5 transition hover:-translate-y-0.5 hover:border-white/25"
@@ -100,10 +94,10 @@ export default function HomePage() {
         </div>
 
         <h3 className="mt-20 mb-5 text-3xl font-semibold tracking-tight">
-          Workflow
+          {t("page.skills.workflow")}
         </h3>
         <ol className="flex flex-wrap gap-2">
-          {WORKFLOW.map((w) => (
+          {workflow.map((w) => (
             <li
               key={w}
               className="flex items-center gap-2 rounded-full border border-white/10 bg-bg-soft px-4 py-2.5 font-mono text-[11.5px] tracking-[0.22em] transition hover:border-cyan hover:text-cyan"
@@ -115,7 +109,7 @@ export default function HomePage() {
         </ol>
       </section>
 
-      <Banner>REACH OUT</Banner>
+      <Banner>{t("home.banner.contact")}</Banner>
       <Contact />
     </>
   );

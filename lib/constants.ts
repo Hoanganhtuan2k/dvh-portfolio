@@ -2,15 +2,15 @@ import type { Project, Experience, SkillGroup } from "./types";
 
 export const PERSON = {
   name: "Dao Viet Hoang",
-  role: "AI Developer · Fintech & Banking",
-  tagline: "AI Developer building intelligent backends for banking & finance",
+  role: "Backend & Integration Engineer · Fintech & Banking",
+  tagline: "Backend & integration engineer building reliable banking platforms — with AI as a growing skill area",
   location: "Nguyen Khanh Toan, Cau Giay, Hanoi",
   email: "daoviethoang2k@gmail.com",
   phone: "+84 38 907 6090",
   linkedin:
-    "https://www.linkedin.com/in/đào-việt-hoàng-38605026b/",
+    "https://www.linkedin.com/in/dao-viet-hoang-38605026b/",
   summary:
-    "AI Developer with 4+ years engineering production-grade backends for banks and financial platforms. I bridge classic Java/Spring systems with modern AI workloads — RAG pipelines, LLM gateways, fraud-signal services and decisioning APIs — while keeping latency, observability and compliance at enterprise standards.",
+    "Backend & integration engineer with 4+ years building production-grade systems for banks and financial platforms on Java / Spring Boot, MuleSoft and Temenos T24. Comfortable extending these backends with modern AI workloads — RAG pipelines, LLM gateways, fraud-signal services and decisioning APIs — while keeping latency, observability and compliance at enterprise standards. Track record: ~3M+ daily transactions, p95 latency < 200 ms and 99.9% integration uptime in regulated banking environments.",
 };
 
 export const TECH_ICONS = [
@@ -57,7 +57,7 @@ export const PROJECTS: Project[] = [
       "Japanese enterprise customer-management & authorization platform built on a low-code Excel-driven configuration approach. Owned migration, upgrades and long-term maintenance.",
     tech: ["Java", "Vue.js", "SQL", "JUnit", "Migration"],
     scope: "Authorization, low-code Excel config, Vue ↔ Java integration",
-    when: "Oct 2024 — May 2025",
+    when: "2024 — 2025",
   },
   {
     id: 3,
@@ -66,7 +66,7 @@ export const PROJECTS: Project[] = [
       "Active development and maintenance of the Temenos T24 core banking platform. Built API connections for seamless inter-system data exchange and tuned performance.",
     tech: ["T24", "Java", "API", "SQL", "Banking"],
     scope: "Core banking integrations, API plumbing, DB optimization",
-    when: "Mar 2024 — Oct 2024",
+    when: "2024",
   },
   {
     id: 4,
@@ -75,7 +75,7 @@ export const PROJECTS: Project[] = [
       "Digital-certificate issuance, management and digital-signing platforms. Built integration APIs, deployed across DEV/PROD, optimized DB & app.",
     tech: ["Java", "Spring Boot", "JPA", "PostgreSQL", "PKI"],
     scope: "PKI services, signing pipeline, integration APIs",
-    when: "May 2022 — Mar 2024",
+    when: "2022 — 2024",
   },
   {
     id: 5,
@@ -93,78 +93,41 @@ export const PROJECTS: Project[] = [
       "Document management, citizen identity and records-storage platforms for the Ministry of Public Security. Backend dev, unit testing and DB optimization.",
     tech: ["Java", "SQL Server", "JUnit", "Maintenance"],
     scope: "Government identity & records platforms",
-    when: "Aug 2021 — May 2022",
+    when: "2021 — 2022",
   },
 ];
 
 export const EXPERIENCE: Experience[] = [
   {
-    when: "OCT 2025 — PRESENT",
-    role: "MuleSoft Developer",
-    org: "Onsite Techcombank · Enterprise Integration",
+    when: "2024 — PRESENT",
+    role: "Banking Backend & Integration Engineer",
+    org: "Multi-client FSI engagements · Vietnam & Japan",
     summary:
-      "Building and operating MuleSoft-based integration layer between core banking, payment, card and CRM systems for one of Vietnam’s largest commercial banks.",
+      "Hands-on engineering across core banking, integration mesh, internal workflows and Japanese enterprise platforms — from Temenos T24 to MuleSoft API-led connectivity and approval engines.",
     bullets: [
-      "Designed and implemented MuleSoft integration flows (REST & SOAP) connecting core banking, card management and downstream services.",
-      "Modeled enterprise APIs (RAML / OpenAPI) and applied API-led connectivity (System / Process / Experience layers).",
-      "Hardened security with OAuth2, mTLS and Anypoint policies; tuned throughput, retry and circuit-breaker behavior for production traffic.",
-      "Worked closely with banking domain teams on data contracts, transaction integrity and observability across the integration mesh.",
-      "Lays the groundwork for AI-augmented services (decisioning, fraud-signal, RAG over internal docs) sitting on top of the integration layer.",
+      "Designed and implemented 25+ MuleSoft integration flows (REST & SOAP) serving ~3M daily transactions across core banking, card and downstream services; sustained ~1.2k RPS at p95 < 200 ms with 99.9% uptime.",
+      "Applied API-led connectivity (RAML / OpenAPI, System / Process / Experience layers) and hardened security with OAuth2, mTLS and Anypoint policies in regulated banking environments.",
+      "Developed and maintained the Temenos T24 core banking platform — built inter-system API connections and tuned database / application performance.",
+      "Engineered enterprise approval workflow (Java / Spring Boot / REST / Oracle): cut average API response time by ~45% and reduced peak DB load by ~30%.",
+      "Delivered Java backend & Vue.js integration on a low-code (Excel-driven) authorization platform for Japanese clients — owned migration, upgrades and unit testing.",
     ],
     tech: [
       "MuleSoft",
       "Anypoint",
+      "T24",
+      "Java",
+      "Spring Boot",
+      "OAuth2",
       "REST",
       "SOAP",
-      "OAuth2",
-      "DataWeave",
-      "Java",
+      "Oracle",
+      "Vue.js",
     ],
-    badge: "TCB",
+    badge: "FSI",
     badgeTone: "emerald",
   },
   {
-    when: "MAY 2025 — OCT 2025",
-    role: "Java Developer",
-    org: "Onsite TPBank · Approve System",
-    summary:
-      "Internal approval workflow supporting enterprise business processes.",
-    bullets: [
-      "Developed, maintained and enhanced the workflow system.",
-      "Designed and integrated RESTful APIs between internal services.",
-      "Optimized application performance and database queries.",
-      "Supported production issues and improved system stability.",
-    ],
-    tech: ["Java", "Spring Boot", "REST", "Oracle"],
-  },
-  {
-    when: "OCT 2024 — MAY 2025",
-    role: "Java Developer",
-    org: "Onsite NTT DATA · BEAD (Japan)",
-    summary:
-      "Japanese enterprise customer-management & authorization platform on a low-code Excel-driven configuration approach.",
-    bullets: [
-      "Core developer for system migration, upgrades and long-term maintenance.",
-      "Maintained Java backend services, SQL queries and Vue.js API integration.",
-      "Implemented unit tests and authored technical documentation.",
-      "Worked directly with Japanese stakeholders on change requests and incidents.",
-    ],
-    tech: ["Java", "Vue.js", "SQL", "JUnit"],
-  },
-  {
-    when: "MAR 2024 — OCT 2024",
-    role: "Java Developer",
-    org: "Onsite LPBank · T24 System",
-    summary: "Development and maintenance of the T24 core banking platform.",
-    bullets: [
-      "Primary developer on the T24 platform.",
-      "Built API connections for seamless inter-system data interchange.",
-      "Performed system, code and database optimizations.",
-    ],
-    tech: ["T24", "Java", "API", "SQL"],
-  },
-  {
-    when: "MAY 2022 — MAR 2024",
+    when: "2022 — 2024",
     role: "Java Developer",
     org: "Savis Digital · Webra · SigningServer · WSO2 APIM",
     bullets: [
@@ -176,7 +139,7 @@ export const EXPERIENCE: Experience[] = [
     tech: ["Java", "Spring Boot", "WSO2", "PKI", "PostgreSQL"],
   },
   {
-    when: "AUG 2021 — MAY 2022",
+    when: "2021 — 2022",
     role: "Java Developer · Intern → Junior",
     org: "Gtel-ICT · Ministry of Public Security projects",
     bullets: [
@@ -188,7 +151,7 @@ export const EXPERIENCE: Experience[] = [
     tech: ["Java", "SQL Server", "JUnit"],
   },
   {
-    when: "JAN 2021 — AUG 2021",
+    when: "2021",
     role: "Java Developer · Intern → Fresher",
     org: "CRM Viet · CRM platform for the Japanese market",
     summary:
@@ -215,7 +178,7 @@ export const EXPERIENCE: Experience[] = [
     badgeTone: "warm",
   },
   {
-    when: "JUL 2018 — APR 2020",
+    when: "2018 — 2020",
     role: "Bach Khoa — Aptech",
     org: "Major: Java",
     bullets: [
@@ -228,16 +191,11 @@ export const EXPERIENCE: Experience[] = [
 ];
 
 export const SKILLS: SkillGroup[] = [
-  {
-    title: "AI & LLM",
-    items: [
-      "RAG pipelines",
-      "LLM gateways (OpenAI / local)",
-      "Vector search (pgvector)",
-      "Prompt engineering",
-    ],
-  },
   { title: "Backend", items: ["Java", "Spring Boot", "JPA", "Hibernate"] },
+  {
+    title: "API & Integration",
+    items: ["MuleSoft / Anypoint", "RESTful API", "WSO2 APIM", "API Gateway", "Event-driven"],
+  },
   {
     title: "Fintech & Banking",
     items: [
@@ -252,16 +210,21 @@ export const SKILLS: SkillGroup[] = [
     items: ["PostgreSQL", "Oracle", "MySQL", "SQL Server"],
   },
   {
-    title: "API & Integration",
-    items: ["RESTful API", "WSO2 APIM", "API Gateway", "Event-driven"],
-  },
-  {
     title: "Quality · DevOps",
     items: [
       "JUnit · Mockito",
       "Redis · Docker",
       "Observability",
       "Technical Documentation",
+    ],
+  },
+  {
+    title: "AI & LLM (growing)",
+    items: [
+      "RAG pipelines",
+      "LLM gateways (OpenAI / local)",
+      "Vector search (pgvector)",
+      "Prompt engineering",
     ],
   },
 ];

@@ -1,8 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { Mail, Linkedin, Github } from "lucide-react";
-import { PERSON } from "@/lib/constants";
+import { useContent, useT } from "@/lib/i18n";
 
 export default function Footer() {
+  const { person } = useContent();
+  const t = useT();
   return (
     <footer className="relative mt-24 border-t border-white/10 bg-[#050505]/80 backdrop-blur">
       {/* big subtle wordmark — single, low-contrast, decorative only */}
@@ -15,29 +19,29 @@ export default function Footer() {
       <div className="mx-auto flex max-w-[1280px] flex-col items-start gap-10 px-9 py-12 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="font-mono text-[10.5px] tracking-[0.28em] text-cyan">
-            LET&apos;S BUILD
+            {t("footer.cta")}
           </p>
           <h3 className="mt-3 max-w-[520px] text-3xl font-semibold leading-tight tracking-tight md:text-4xl">
-            Got a backend that needs to scale, ship, or just survive Monday?{" "}
+            {t("footer.headline")}{" "}
             <a
-              href={`mailto:${PERSON.email}`}
+              href={`mailto:${person.email}`}
               className="underline decoration-cyan decoration-2 underline-offset-4 hover:text-cyan"
             >
-              Say hi.
+              {t("footer.sayHi")}
             </a>
           </h3>
         </div>
 
         <div className="flex items-center gap-3">
           <a
-            href={`mailto:${PERSON.email}`}
+            href={`mailto:${person.email}`}
             aria-label="Email"
             className="grid h-11 w-11 place-items-center rounded-full border border-white/15 text-white/70 transition hover:border-cyan/60 hover:text-cyan"
           >
             <Mail size={16} />
           </a>
           <a
-            href={PERSON.linkedin}
+            href={person.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
@@ -58,10 +62,10 @@ export default function Footer() {
       </div>
 
       <div className="mx-auto flex max-w-[1280px] flex-col gap-3 border-t border-white/10 px-9 py-5 font-mono text-[11px] tracking-[0.22em] text-white/40 md:flex-row md:items-center md:justify-between">
-        <span>© 2026 · {PERSON.name.toUpperCase()}</span>
-        <span className="text-white/30">JAVA · SPRING · APIs</span>
+        <span>© 2026 · {person.name.toUpperCase()}</span>
+        <span className="text-white/30">{t("footer.tagline")}</span>
         <Link href="#home" className="hover:text-cyan">
-          BACK TO TOP ↑
+          {t("footer.backToTop")}
         </Link>
       </div>
     </footer>

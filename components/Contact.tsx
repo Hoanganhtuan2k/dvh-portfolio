@@ -1,38 +1,46 @@
-import { Mail, Phone, Linkedin, MapPin } from "lucide-react";
-import { PERSON } from "@/lib/constants";
+"use client";
 
-const tiles = [
-  {
-    label: "MAIL",
-    value: PERSON.email,
-    href: `mailto:${PERSON.email}`,
-    Icon: Mail,
-  },
-  {
-    label: "PHONE",
-    value: PERSON.phone,
-    href: `tel:${PERSON.phone.replace(/\s/g, "")}`,
-    Icon: Phone,
-  },
-  {
-    label: "LINKEDIN",
-    value: "/in/dao-viet-hoang",
-    href: PERSON.linkedin,
-    Icon: Linkedin,
-  },
-  {
-    label: "LOCATION",
-    value: PERSON.location,
-    href: null,
-    Icon: MapPin,
-  },
-];
+import { Mail, Phone, Linkedin, MapPin, type LucideIcon } from "lucide-react";
+import { useContent, useT } from "@/lib/i18n";
 
 export default function Contact() {
+  const { person } = useContent();
+  const t = useT();
+  const tiles: {
+    label: string;
+    value: string;
+    href: string | null;
+    Icon: LucideIcon;
+  }[] = [
+    {
+      label: t("contact.tile.mail"),
+      value: person.email,
+      href: `mailto:${person.email}`,
+      Icon: Mail,
+    },
+    {
+      label: t("contact.tile.phone"),
+      value: person.phone,
+      href: `tel:${person.phone.replace(/\s/g, "")}`,
+      Icon: Phone,
+    },
+    {
+      label: t("contact.tile.linkedin"),
+      value: "/in/dao-viet-hoang",
+      href: person.linkedin,
+      Icon: Linkedin,
+    },
+    {
+      label: t("contact.tile.location"),
+      value: person.location,
+      href: null,
+      Icon: MapPin,
+    },
+  ];
   return (
     <section id="contact" className="mx-auto max-w-[1280px] px-9 py-32">
       <h2 className="text-gradient mb-12 text-[clamp(40px,7vw,90px)] font-bold leading-none tracking-[-0.025em]">
-        Hit Me Up
+        {t("contact.title")}
       </h2>
       <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
         {tiles.map(({ label, value, href, Icon }) => {
@@ -66,8 +74,7 @@ export default function Contact() {
         })}
       </div>
       <p className="mt-8 font-mono text-sm text-white/50">
-        Currently building backends at TPBank · open to interesting backend &
-        platform engineering roles.
+        {t("contact.note")}
       </p>
     </section>
   );

@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { SectionTitle } from "@/components/SectionTitle";
 import { Kicker } from "@/components/Kicker";
+import { useT } from "@/lib/i18n";
 
 type Tone = "cyan" | "warm" | "violet" | "emerald";
 
@@ -171,6 +172,7 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 const isPdf = (src?: string) => !!src && /\.pdf($|\?)/i.test(src);
 
 export default function CredentialsPage() {
+  const t = useT();
   const [filter, setFilter] = useState<string>("all");
   const [expanded, setExpanded] = useState<string | null>(null);
   const [viewerIndex, setViewerIndex] = useState<number | null>(null);
@@ -247,8 +249,8 @@ export default function CredentialsPage() {
 
   return (
     <section className="mx-auto max-w-[1100px] px-6 py-28 sm:px-9">
-      <Kicker icon={<Sparkles size={12} />} label="ACHIEVEMENTS" />
-      <SectionTitle>My Credentials</SectionTitle>
+      <Kicker icon={<Sparkles size={12} />} label={t("kicker.achievements")} />
+      <SectionTitle>{t("page.credentials.title")}</SectionTitle>
       <p className="mt-3 font-mono text-[12px] tracking-[0.18em] text-white/45">
         {ITEMS.length} ENTRIES · CLICK ANY CARD TO EXPAND · CLICK THUMBNAIL TO
         VIEW
